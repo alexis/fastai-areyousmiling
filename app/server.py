@@ -8,10 +8,14 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-export_file_url = 'https://www.dropbox.com/s/v6cuuvddq73d1e0/export.pkl?raw=1'
+export_file_url  = 'https://www.dropbox.com/s/5qlk8g7lx27heyf/export.pkl?raw=1'
 export_file_name = 'export.pkl'
 
-classes = ['black', 'grizzly', 'teddys']
+# an additional file because it's fastai 1.0.39 on kaggle:
+export_pth_url   = 'https://www.dropbox.com/s/fslb5m2c4k8sqzh/stage-2--lr-1e6-1e2.pth?raw=1'
+export_pth_name  = 'stage-2--lr-1e6-1e2.pth'
+
+classes = ['negative', 'neutral', 'positive']
 path = Path(__file__).parent
 
 app = Starlette()
@@ -27,8 +31,13 @@ async def download_file(url, dest):
 
 async def setup_learner():
     await download_file(export_file_url, path/export_file_name)
+    await download_file(export_pth_url, path/'models'/export_pth_name) # because it's 1.0.39 on kaggle
     try:
-        learn = load_learner(path, export_file_name)
+        # because it's 1.0.39 on kaggle:
+        #learn = load_learner(path, export_file_name)
+        empty_data = ImageDataBunch.load_empty(path, fname=export_file_name)
+        learn = create_cnn(empty_data, models.resnet34)
+        learn.load(os.path.splitext(export_pth_name)[0])
         return learn
     except RuntimeError as e:
         if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
