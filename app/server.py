@@ -19,7 +19,7 @@ classes = ['negative', 'neutral', 'positive']
 interpretation = {
     'negative': "Yeah, it's depressing",
     'neutral': "Hm, actually, it's hard to tell",
-    'positive': "No, I think it's not depressing"
+    'positive': "No, I don't think it's depressing"
     }
 path = Path(__file__).parent
 
