@@ -16,6 +16,11 @@ export_pth_url   = 'https://www.dropbox.com/s/fslb5m2c4k8sqzh/stage-2--lr-1e6-1e
 export_pth_name  = 'stage-2--lr-1e6-1e2.pth'
 
 classes = ['negative', 'neutral', 'positive']
+interpretation = {
+    'negative': "Yeah, it's depressing",
+    'neutral': "Hm, actually, it's hard to tell",
+    'positive': "No, I think it's not depressing"
+    }
 path = Path(__file__).parent
 
 app = Starlette()
@@ -63,7 +68,7 @@ async def analyze(request):
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str(prediction)})
+    return JSONResponse({'result': str(interpretation[prediction])})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)

@@ -17,6 +17,7 @@ function analyze() {
     if (uploadFiles.length != 1) alert('Please select 1 file to analyze!');
 
     el('analyze-button').innerHTML = 'Analyzing...';
+    el('result-label').innerHTML = `Result = ${response['result']}`;
     var xhr = new XMLHttpRequest();
     var loc = window.location
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true);
