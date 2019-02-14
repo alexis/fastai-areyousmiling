@@ -43,7 +43,7 @@ async def setup_learner():
         # because it's 1.0.39 on kaggle:
         #learn = load_learner(path, export_file_name)
         empty_data = ImageDataBunch.load_empty(path, fname=export_file_name)
-        learn = create_cnn(empty_data, models.resnet34)
+        learn = create_cnn(empty_data, models.resnet50)
         learn.load(os.path.splitext(export_pth_name)[0])
         return learn
     except RuntimeError as e:
