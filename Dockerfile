@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt --upgrade
 
 COPY app app/
 
+ENV TORCH_HOME /tmp/.torch
 RUN python app/server.py
 
 EXPOSE 5042
