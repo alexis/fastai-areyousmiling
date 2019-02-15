@@ -9,7 +9,7 @@
 <body>
 <div>
     <div class='center'>
-        <div class='title'>Is this deppressing?</div>
+        <div class='title'>Are you smiling?</div>
         <p>
            Upload an image and I'll try to guess.
         </p>
@@ -22,15 +22,10 @@
                        accept='image/*'
                        onchange='showPicked(this)'>
             </div>
-            <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
-            <div class='upload-label'>
+            <div id='image-picked' class='no-display'> </div>
+            <button id='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+            <div class='upload-label no-display'>
                 <label id='upload-label'>No file chosen</label>
-            </div>
-            <div>
-                <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
-            </div>
-            <div class='analyze'>
-                <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
             </div>
             <div class='result-label'>
                 <label id='result-label'></label>

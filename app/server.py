@@ -8,21 +8,15 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-#export_file_url  = 'https://www.dropbox.com/s/5qlk8g7lx27heyf/export.pkl?raw=1'
-export_file_url  = 'https://www.dropbox.com/s/uaes7gw2o7hw394/export-resnet50.pkl?raw=1'
-export_file_name = 'export.pkl'
+# 2 files to work with fastai v1.0.39 on kaggle:
 
-# an additional file because it's fastai 1.0.39 on kaggle:
-#export_pth_url   = 'https://www.dropbox.com/s/fslb5m2c4k8sqzh/stage-2--lr-1e6-1e2.pth?raw=1'
-export_pth_url   = 'https://www.dropbox.com/s/u9aq2snq8lab59h/stage-2--lr-1e6-1e3--resnet50.pth?raw=1'
-export_pth_name  = 'stage-2--lr-1e6-1e2.pth'
+export_file_url  = 'https://www.dropbox.com/s/22hy74xm49crtg2/posneg-b10-1.pkl?raw=1'
+export_pth_url   = 'https://www.dropbox.com/s/88nricbxu81dyt2/posneg-b10-1.pth?raw=1'
+
+export_file_name = 'export.pkl'
+export_pth_name  = 'export.pth'
 
 classes = ['negative', 'neutral', 'positive']
-interpretation = {
-    'negative': "Yeah, it's depressing",
-    'neutral': "Hm, actually, it's hard to tell",
-    'positive': "No, I don't think it's depressing"
-    }
 path = Path(__file__).parent
 
 app = Starlette()
@@ -44,6 +38,7 @@ async def setup_learner():
         #learn = load_learner(path, export_file_name)
         empty_data = ImageDataBunch.load_empty(path, fname=export_file_name)
         learn = create_cnn(empty_data, models.resnet50)
+        #learn = create_cnn(empty_data, models.resnet34)
         learn.load(os.path.splitext(export_pth_name)[0])
         return learn
     except RuntimeError as e:
@@ -70,7 +65,7 @@ async def analyze(request):
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': interpretation[str(prediction)]})
+    return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)
