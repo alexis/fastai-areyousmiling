@@ -9,10 +9,13 @@ RUN pip install --upgrade pip
 
 RUN pip install --no-cache-dir -r requirements.txt --upgrade
 
-COPY app app/
+RUN mkdir -p app/static app/models
+COPY app/server.py app/
 
 ENV TORCH_HOME /tmp/.torch
 RUN python app/server.py
+
+COPY app app/
 
 EXPOSE 5042
 
