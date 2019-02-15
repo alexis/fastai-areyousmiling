@@ -1,6 +1,19 @@
 var el = x => document.getElementById(x);
+var scaled_image;
 
-function showPicker(inputId) { el('file-input').click(); }
+function showPicker(inputId) { 
+  el('file-input').click(); 
+  el('file-input').onchange = function (e) {
+      loadImage(
+          e.target.files[0],
+          function (img) {
+              scaled_image = img
+              document.body.appendChild(img);
+          },
+          {maxWidth: 400, canvas:true}
+      );
+  }
+}
 
 function showPicked(input) {
     el('upload-label').innerHTML = input.files[0].name;
@@ -31,7 +44,17 @@ function analyze() {
     }
 
     var fileData = new FormData();
-    fileData.append('file', uploadFiles[0]);
-    xhr.send(fileData);
+
+    if (scaled_image.toBlob) {
+        scaled_image.toBlob(
+            function (blob) {
+                var fileData = new FormData();
+                //fileData.append('file', blob, fileName);
+                fileData.append('file', blob);
+                xhr.send(fileData);
+            },
+            'image/jpeg'
+        );
+    }
 }
 
