@@ -3,26 +3,20 @@ var scaled_image;
 
 function showPicker(inputId) { 
   el('file-input').click(); 
-  el('file-input').onchange = function (e) {
-      loadImage(
-          e.target.files[0],
-          function (img) {
-              scaled_image = img
-              document.body.appendChild(img);
-          },
-          {maxWidth: 400, canvas:true}
-      );
-  }
 }
 
 function showPicked(input) {
     el('upload-label').innerHTML = input.files[0].name;
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        el('image-picked').src = e.target.result;
-        el('image-picked').className = '';
-    }
-    reader.readAsDataURL(input.files[0]);
+
+    loadImage(
+        input.files[0],
+        function (canvas) {
+            el('image-picked').src = canvas.toDataURL()
+            el('image-picked').className = '';
+            scaled_image = canvas
+        },
+        {maxWidth: 400, canvas: true}
+    );
 }
 
 function analyze() {
