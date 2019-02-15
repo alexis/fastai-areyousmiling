@@ -1,5 +1,13 @@
 body {
     background-color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+body.sad {
+    background-color: #336;
+    color: #CCF;
 }
 
 .no-display {
@@ -16,14 +24,18 @@ body {
 }
 
 .title {
-    font-size: 30px;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    color: #262626;
+    font-size: 90px;
 }
 
 .content {
-    margin-top: 10em;
+    margin-top: 5em;
+}
+
+#image-picked {
+    padding: 20px;
+}
+.sad #image-picked {
+    opacity: 0.6;
 }
 
 .analyze {
@@ -37,28 +49,22 @@ body {
 
 .result-label {
     margin-top: 0.5em;
-    padding: 10px;
-    font-size: 13px;
+    padding: 20px;
+    font-size: 30px;
 }
 
 button.choose-file-button {
-  width: 200px;
-  height: 40px;
-  border-radius: 2px;
-  background-color: #ffffff;
-  border: solid 1px #7052CB;
-  font-size: 13px;
-  color: #7052CB;
-}
-
-button.analyze-button {
     width: 200px;
     height: 40px;
-    border: solid 1px #7052CB;
+    border: solid 1px #039;
     border-radius: 2px;
-    background-color: #7052CB;
+    background-color: #039;
     font-size: 13px;
     color: #ffffff;
+    cursor: pointer;
+}
+.sad button.choose-file-button {
+    background-color: #000;
 }
 
 button:focus {outline:0;}

@@ -1,5 +1,4 @@
 var el = x => document.getElementById(x);
-var scaled_image;
 
 function showPicker(inputId) { 
   el('file-input').click(); 
@@ -11,36 +10,40 @@ function showPicked(input) {
     loadImage(
         input.files[0],
         function (canvas) {
-            el('image-picked').src = canvas.toDataURL()
             el('image-picked').className = '';
-            scaled_image = canvas
+            el('image-picked').innerHTML = '';
+            el('image-picked').appendChild(canvas);
+
+            analyze();
         },
         {maxWidth: 400, canvas: true}
     );
 }
 
 function analyze() {
-    var uploadFiles = el('file-input').files;
-    if (uploadFiles.length != 1) alert('Please select 1 file to analyze!');
+    var canvas = el('image-picked').children[0]
 
-    el('analyze-button').innerHTML = 'Uploading...';
     el('result-label').innerHTML = '';
     var xhr = new XMLHttpRequest();
     var loc = window.location
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true);
     xhr.onerror = function() {alert (xhr.responseText);}
+    el('result-label').innerHTML = '...'
     xhr.onload = function(e) {
         if (this.readyState === 4) {
             var response = JSON.parse(e.target.responseText);
-            el('result-label').innerHTML = `${response['result']}`;
+            interp = `${response['result']}`;
+            el('result-label').innerHTML = interp;
+            if  (interp.match(/Yeah/)) document.body.className = 'sad'
+            else document.body.className = ''
         }
-        el('analyze-button').innerHTML = 'Analyze';
     }
 
     var fileData = new FormData();
 
-    if (scaled_image.toBlob) {
-        scaled_image.toBlob(
+
+    if (canvas.toBlob) {
+        canvas.toBlob(
             function (blob) {
                 var fileData = new FormData();
                 //fileData.append('file', blob, fileName);
