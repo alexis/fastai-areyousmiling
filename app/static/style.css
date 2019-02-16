@@ -54,12 +54,12 @@ body.sad {
 }
 
 button.choose-file-button {
-    width: 200px;
-    height: 40px;
+    width: 15em;
+    height: 3.5em;
     border: solid 1px #039;
     border-radius: 2px;
     background-color: #039;
-    font-size: 13px;
+    font-size: 22px;
     color: #ffffff;
     cursor: pointer;
 }
