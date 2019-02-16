@@ -10,13 +10,15 @@ from fastai.vision import *
 
 #export_file_url  = 'https://www.dropbox.com/s/5qlk8g7lx27heyf/export.pkl?raw=1'
 #export_file_url  = 'https://www.dropbox.com/s/uaes7gw2o7hw394/export-resnet50.pkl?raw=1'
-export_file_url   = 'https://www.dropbox.com/s/tdosvlypzdhhbob/export-faces-rn50.pkl?raw=1'
+#export_file_url   = 'https://www.dropbox.com/s/tdosvlypzdhhbob/export-faces-rn50.pkl?raw=1'
+export_file_url   = 'https://www.dropbox.com/s/3xou8baqwax1jk2/posneg-faces-rn50-2.pkl?raw=1'
 export_file_name = 'export.pkl'
 
 # an additional file because it's fastai 1.0.39 on kaggle:
 #export_pth_url   = 'https://www.dropbox.com/s/fslb5m2c4k8sqzh/stage-2--lr-1e6-1e2.pth?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/u9aq2snq8lab59h/stage-2--lr-1e6-1e3--resnet50.pth?raw=1'
-export_pth_url   = 'https://www.dropbox.com/s/1fph7542ejx7bes/posneg-faces-rn50.pth?raw=1'
+#export_pth_url   = 'https://www.dropbox.com/s/1fph7542ejx7bes/posneg-faces-rn50.pth?raw=1'
+export_pth_url   = 'https://www.dropbox.com/s/4q2j5ktjla18a0y/posneg-faces-rn50-2.pth?raw=1'
 export_pth_name  = 'posneg.pth'
 
 classes = ['negative', 'neutral', 'positive']
