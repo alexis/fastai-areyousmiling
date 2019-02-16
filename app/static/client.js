@@ -22,7 +22,7 @@ function showPicked(input) {
 
             analyze();
         },
-        {maxWidth: 400, orientation: true, canvas: true}
+        {maxWidth: 400, maxHeight: 400, orientation: true, canvas: true}
     );
 }
 

@@ -65,6 +65,7 @@ button.choose-file-button {
 }
 .sad button.choose-file-button {
     background-color: #000;
+    border: solid 1px #000;
 }
 
 button:focus {outline:0;}
