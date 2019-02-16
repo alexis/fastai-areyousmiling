@@ -20,11 +20,6 @@ export_pth_url   = 'https://www.dropbox.com/s/1fph7542ejx7bes/posneg-faces-rn50.
 export_pth_name  = 'posneg.pth'
 
 classes = ['negative', 'neutral', 'positive']
-interpretation = {
-    'negative': "Yeah, it's depressing",
-    'neutral': "Hm, actually, it's hard to tell",
-    'positive': "No, I don't think it's depressing"
-    }
 path = Path(__file__).parent
 
 app = Starlette()
@@ -72,7 +67,7 @@ async def analyze(request):
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': interpretation[str(prediction)]})
+    return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app=app, host='0.0.0.0', port=5042)

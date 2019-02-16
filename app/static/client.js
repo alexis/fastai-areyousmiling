@@ -1,3 +1,9 @@
+var interpretation = {
+  negative: "Yeah, it's sad",
+  neutral:  "Hm, actually, it's hard to tell",
+  positive: "No, I don't think it's sad"
+}
+
 var el = x => document.getElementById(x);
 
 function showPicker(inputId) { 
@@ -32,8 +38,8 @@ function analyze() {
     xhr.onload = function(e) {
         if (this.readyState === 4) {
             var response = JSON.parse(e.target.responseText);
-            interp = `${response['result']}`;
-            el('result-label').innerHTML = interp;
+            prediction = `${response['result']}`;
+            el('result-label').innerHTML = interpretation[prediction];
             if  (interp.match(/Yeah/)) document.body.className = 'sad'
             else document.body.className = ''
         }
