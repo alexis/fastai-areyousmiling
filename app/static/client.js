@@ -40,7 +40,7 @@ function analyze() {
             var response = JSON.parse(e.target.responseText);
             prediction = `${response['result']}`;
             el('result-label').innerHTML = interpretation[prediction];
-            if  (interp.match(/Yeah/)) document.body.className = 'sad'
+            if  (prediction == 'negative') document.body.className = 'sad'
             else document.body.className = ''
         }
     }
