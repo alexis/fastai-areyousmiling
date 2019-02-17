@@ -12,7 +12,7 @@ from fastai.vision import *
 #export_file_url  = 'https://www.dropbox.com/s/uaes7gw2o7hw394/export-resnet50.pkl?raw=1'
 #export_file_url   = 'https://www.dropbox.com/s/tdosvlypzdhhbob/export-faces-rn50.pkl?raw=1'
 #export_file_url   = 'https://www.dropbox.com/s/3xou8baqwax1jk2/posneg-faces-rn50-2.pkl?raw=1'
-export_file_url   = 'https://www.dropbox.com/s/07mwwo8qdlp9zef/posneg-faces-rn50-3.pkl?raw-1'
+export_file_url   = 'https://www.dropbox.com/s/07mwwo8qdlp9zef/posneg-faces-rn50-3.pkl?raw=1'
 export_file_name = 'export.pkl'
 
 # an additional file because it's fastai 1.0.39 on kaggle:
