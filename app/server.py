@@ -8,19 +8,33 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-#export_file_url  = 'https://www.dropbox.com/s/5qlk8g7lx27heyf/export.pkl?raw=1'
-#export_file_url  = 'https://www.dropbox.com/s/uaes7gw2o7hw394/export-resnet50.pkl?raw=1'
-#export_file_url   = 'https://www.dropbox.com/s/tdosvlypzdhhbob/export-faces-rn50.pkl?raw=1'
-#export_file_url   = 'https://www.dropbox.com/s/3xou8baqwax1jk2/posneg-faces-rn50-2.pkl?raw=1'
-export_file_url   = 'https://www.dropbox.com/s/07mwwo8qdlp9zef/posneg-faces-rn50-3.pkl?raw=1'
-export_file_name = 'export.pkl'
+# 2 files because it's fastai 1.0.39 on kaggle:
 
-# an additional file because it's fastai 1.0.39 on kaggle:
+#export_file_url  = 'https://www.dropbox.com/s/5qlk8g7lx27heyf/export.pkl?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/fslb5m2c4k8sqzh/stage-2--lr-1e6-1e2.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/uaes7gw2o7hw394/export-resnet50.pkl?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/u9aq2snq8lab59h/stage-2--lr-1e6-1e3--resnet50.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/tdosvlypzdhhbob/export-faces-rn50.pkl?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/1fph7542ejx7bes/posneg-faces-rn50.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/3xou8baqwax1jk2/posneg-faces-rn50-2.pkl?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/4q2j5ktjla18a0y/posneg-faces-rn50-2.pth?raw=1'
-export_pth_url   = 'https://www.dropbox.com/s/un15jg9dwatcfsn/posneg-faces-rn50-3.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/07mwwo8qdlp9zef/posneg-faces-rn50-3.pkl?raw=1'
+#export_pth_url   = 'https://www.dropbox.com/s/un15jg9dwatcfsn/posneg-faces-rn50-3.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/vjetkehkso1flgq/posneg-faces-binneg.pkl?raw=1'
+#export_pth_url   = 'https://www.dropbox.com/s/cx47hs86r3rmco5/posneg-faces-binneg.pth?raw=1'
+
+#export_file_url  = 'https://www.dropbox.com/s/v70hwpg03faamxm/posneg-faces-rn50-4.pkl?raw=1'
+#export_pth_url   = 'https://www.dropbox.com/s/xj4wjyozfin4bof/posneg-faces-rn50-4.pth?raw=1'
+
+export_file_url  = 'https://www.dropbox.com/s/57ip2fvzznv6ioi/posneg-extra-1.pkl?raw=1' # additional dataset, resnet34
+export_pth_url   = 'https://www.dropbox.com/s/60xtjo94g24dhs5/posneg-extra-1.pth?raw=1'
+
+export_file_name = 'export.pkl'
 export_pth_name  = 'posneg.pth'
 
 classes = ['negative', 'neutral', 'positive']
@@ -44,7 +58,8 @@ async def setup_learner():
         # because it's 1.0.39 on kaggle:
         #learn = load_learner(path, export_file_name)
         empty_data = ImageDataBunch.load_empty(path, fname=export_file_name)
-        learn = create_cnn(empty_data, models.resnet50)
+        #learn = create_cnn(empty_data, models.resnet50)
+        learn = create_cnn(empty_data, models.resnet34)
         learn.load(os.path.splitext(export_pth_name)[0])
         return learn
     except RuntimeError as e:
