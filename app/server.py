@@ -31,8 +31,11 @@ from fastai.vision import *
 #export_file_url  = 'https://www.dropbox.com/s/v70hwpg03faamxm/posneg-faces-rn50-4.pkl?raw=1'
 #export_pth_url   = 'https://www.dropbox.com/s/xj4wjyozfin4bof/posneg-faces-rn50-4.pth?raw=1'
 
-export_file_url  = 'https://www.dropbox.com/s/57ip2fvzznv6ioi/posneg-extra-1.pkl?raw=1' # additional dataset, resnet34
-export_pth_url   = 'https://www.dropbox.com/s/60xtjo94g24dhs5/posneg-extra-1.pth?raw=1'
+#export_file_url  = 'https://www.dropbox.com/s/57ip2fvzznv6ioi/posneg-extra-1.pkl?raw=1' # additional dataset, resnet34
+#export_pth_url   = 'https://www.dropbox.com/s/60xtjo94g24dhs5/posneg-extra-1.pth?raw=1'
+
+export_file_url  = 'https://www.dropbox.com/s/46ucops2wqay7gg/posneg-kdef-2.pkl?raw=1' # resnet50
+export_pth_url   = 'https://www.dropbox.com/s/p4xrl47p3ypyv40/posneg-kdef-2.pth?raw=1'
 
 export_file_name = 'export.pkl'
 export_pth_name  = 'posneg.pth'
@@ -58,8 +61,8 @@ async def setup_learner():
         # because it's 1.0.39 on kaggle:
         #learn = load_learner(path, export_file_name)
         empty_data = ImageDataBunch.load_empty(path, fname=export_file_name)
-        #learn = create_cnn(empty_data, models.resnet50)
-        learn = create_cnn(empty_data, models.resnet34)
+        learn = create_cnn(empty_data, models.resnet50)
+        #learn = create_cnn(empty_data, models.resnet34)
         learn.load(os.path.splitext(export_pth_name)[0])
         return learn
     except RuntimeError as e:
