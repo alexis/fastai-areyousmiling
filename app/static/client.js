@@ -19,6 +19,7 @@ function showPicked(input) {
             el('image-picked').className = '';
             el('image-picked').innerHTML = '';
             el('image-picked').appendChild(canvas);
+            el('choose-file-button').className = 'no-display';
             document.body.className = '';
 
             analyze();
@@ -41,6 +42,7 @@ function analyze() {
             var response = JSON.parse(e.target.responseText);
             prediction = `${response['result']}`;
             el('result-label').innerHTML = interpretation[prediction];
+            el('choose-file-button').className = '';
             document.body.className = prediction;
         }
     }

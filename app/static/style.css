@@ -57,7 +57,7 @@ body.positive {
     font-size: 30px;
 }
 
-button.choose-file-button {
+button#choose-file-button {
     width: 400px;
     height: 3.5em;
     border: solid 1px #039;
@@ -67,11 +67,11 @@ button.choose-file-button {
     color: #ffffff;
     cursor: pointer;
 }
-.negative button.choose-file-button {
+.negative button#choose-file-button {
     background-color: #000;
     border: solid 1px #000;
 }
-.positive button.choose-file-button {
+.positive button#choose-file-button {
     background-color: #000;
     border: solid 1px #000;
 }
