@@ -5,9 +5,13 @@ body {
     color: #333;
 }
 
-body.sad {
+body.negative {
     background-color: #336;
     color: #CCF;
+}
+body.positive {
+    background-color: #FFA500;
+    color: #000;
 }
 
 .no-display {
@@ -34,8 +38,11 @@ body.sad {
 #image-picked {
     padding: 20px;
 }
-.sad #image-picked {
+.negative #image-picked {
     opacity: 0.6;
+}
+.positive #image-picked {
+    opacity: 0.9;
 }
 
 .analyze {
@@ -63,7 +70,11 @@ button.choose-file-button {
     color: #ffffff;
     cursor: pointer;
 }
-.sad button.choose-file-button {
+.negative button.choose-file-button {
+    background-color: #000;
+    border: solid 1px #000;
+}
+.positive button.choose-file-button {
     background-color: #000;
     border: solid 1px #000;
 }

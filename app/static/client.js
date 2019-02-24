@@ -1,7 +1,7 @@
 var interpretation = {
-  negative: "Yeah, it's sad",
-  neutral:  "Hm, actually, it's hard to tell",
-  positive: "No, I don't think it's sad"
+  negative: "No, I don't think you are. Actually, it's more like you're sad ;(",
+  neutral:  "Mabe you are, mayber you aren't. Anyway, you expression is not strong enough :/",
+  positive: "Yes, looks like you are! And I like your smile :)"
 }
 
 var el = x => document.getElementById(x);
@@ -40,8 +40,7 @@ function analyze() {
             var response = JSON.parse(e.target.responseText);
             prediction = `${response['result']}`;
             el('result-label').innerHTML = interpretation[prediction];
-            if  (prediction == 'negative') document.body.className = 'sad'
-            else document.body.className = ''
+            document.body.className = prediction;
         }
     }
 
