@@ -1,7 +1,7 @@
 var interpretation = {
   negative: "No, I don't think you are. Actually, it's more like you're sad ;(",
-  neutral:  "Mabe you are, mayber you aren't. Anyway, you expression is not strong enough :/",
-  positive: "Yes, looks like you are! And I like your smile :)"
+  neutral:  "You don't look very sad, but it's still not a smile :/",
+  positive: "It looks like you are! And I like your smile :)"
 }
 
 var el = x => document.getElementById(x);
