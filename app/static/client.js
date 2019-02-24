@@ -19,6 +19,7 @@ function showPicked(input) {
             el('image-picked').className = '';
             el('image-picked').innerHTML = '';
             el('image-picked').appendChild(canvas);
+            document.body.className = '';
 
             analyze();
         },
