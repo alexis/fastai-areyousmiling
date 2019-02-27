@@ -1,7 +1,9 @@
-# Starter for deploying [fast.ai](https://www.fast.ai) models on [Render](https://render.com)
+# Areyousmiling 
 
-This repo can be used as a starting point to deploy [fast.ai](https://github.com/fastai/fastai) models on Render.
+My study project for Jeremy Howard's [deep learning course](https://course.fast.ai).
 
-The sample app described here is up at https://fastai-v3.onrender.com. Test it out with bear images!
+It's a tiny [web app](http://areyousmiling.smolianinov.com:8080) powered by the Starlette framework. It basically serves as a very simple interface for a neural network model (ResNet-50, pretrained on ImageNet), which, in turn, was trained by me to classify photos of people into 3 classes, depending on their facial expression: positive, neutral and negative.
 
-The guide for production deployment to Render is at https://course.fast.ai/deployment_render.html.
+Several datasets were used for training, including a custom dataset of images collected with Google Image Search and [KDEF](http://kdef.se/) dataset.
+
+Also, many thanks to Anurag Goel for his Starter kit for deploying fast.ai models on Render.
