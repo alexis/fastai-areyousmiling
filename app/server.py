@@ -37,8 +37,12 @@ from fastai.vision import *
 #export_file_url  = 'https://www.dropbox.com/s/46ucops2wqay7gg/posneg-kdef-2.pkl?raw=1' # resnet50
 #export_pth_url   = 'https://www.dropbox.com/s/p4xrl47p3ypyv40/posneg-kdef-2.pth?raw=1'
 
-export_file_url  = 'https://www.dropbox.com/s/ddsyv79kz8otrw8/posneg-kdef-fer-b0-1.pkl?raw=1' # + fer (3 datasets in total), resnet50
-export_pth_url   = 'https://www.dropbox.com/s/9psot6n6804xx33/posneg-kdef-fer-b0-1.pth?raw=1'
+#export_file_url  = 'https://www.dropbox.com/s/ddsyv79kz8otrw8/posneg-kdef-fer-b0-1.pkl?raw=1' # + fer (3 datasets in total), resnet50
+#export_pth_url   = 'https://www.dropbox.com/s/9psot6n6804xx33/posneg-kdef-fer-b0-1.pth?raw=1'
+
+# + affect, fer ~3.5K, max_lr ~1e-6
+export_file_url  = 'https://www.dropbox.com/s/22hy74xm49crtg2/posneg-kdef-fer-affect-b10-1.pkl?raw=1'
+export_pth_url   = 'https://www.dropbox.com/s/88nricbxu81dyt2/posneg-kdef-fer-affect-b10-1.pth?raw=1'
 
 export_file_name = 'export.pkl'
 export_pth_name  = 'posneg.pth'
