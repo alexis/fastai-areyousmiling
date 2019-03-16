@@ -23,6 +23,7 @@ function showPicked(input) {
             document.body.className = '';
 
             analyze();
+            track_face();
         },
         {maxWidth: 400, maxHeight: 400, orientation: true, canvas: true}
     );
@@ -49,7 +50,6 @@ function analyze() {
 
     var fileData = new FormData();
 
-
     if (canvas.toBlob) {
         canvas.toBlob(
             function (blob) {
@@ -63,3 +63,26 @@ function analyze() {
     }
 }
 
+function plot(x, y, w, h) {
+  var container = el('image-picked');
+  var img_canvas = el('image-picked').children[0];
+  var rect = document.createElement('div');
+  container.appendChild(rect);
+  rect.classList.add('rect');
+  rect.style.width = w + 'px';
+  rect.style.height = h + 'px';
+  rect.style.left = (img_canvas.offsetLeft + x) + 'px';
+  rect.style.top = (img_canvas.offsetTop + y) + 'px';
+};
+
+function track_face() {
+  var img_canvas = el('image-picked').children[0];
+  var tracker = new tracking.ObjectTracker(['face']);
+  tracker.setStepSize(1.7);
+  tracker.on('track', function(event) {
+    event.data.forEach(function(rect) {
+      plot(rect.x, rect.y, rect.width, rect.height);
+    });
+  });
+  tracking.track(img_canvas, tracker);
+}

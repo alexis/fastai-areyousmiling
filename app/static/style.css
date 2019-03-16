@@ -93,6 +93,10 @@ button#choose-file-button {
 
 button:focus {outline:0;}
 
+.rect {
+    position: absolute;
+    border: 2px solid white;
+}
 /*** Loader: ***/
 
 .spinner {
