@@ -9,7 +9,7 @@ import fastai
 from fastai import *
 from fastai.vision import *
 
-export_file_url  = 'https://www.dropbox.com/s/4zf2imdqheh19go/posneg-b25-20.pkl?raw=1'
+export_file_url  = 'https://www.dropbox.com/s/6ffbr9gezpv10jh/posneg-b25-23.pkl?raw=1'
 export_file_name = 'model.pkl'
 
 classes = ['negative', 'neutral', 'positive']
